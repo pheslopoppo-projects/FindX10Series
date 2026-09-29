@@ -2,7 +2,6 @@ import React from 'react';
 import { Camera, Zap, Smartphone, ChevronRight, Lock, CheckCircle2, User, Building, Shield, Award, Sparkles, LogOut } from 'lucide-react';
 import { getTrainingProgress } from '../utils/storage';
 import { moduleContent } from '../data/moduleContent';
-import SalesAssistant from './SalesAssistant';
 
 export default function Dashboard({ userProfile, onSelectModule, onLogout }) {
   const progress = getTrainingProgress();
@@ -189,9 +188,6 @@ export default function Dashboard({ userProfile, onSelectModule, onLogout }) {
       <footer className="mt-8 text-center text-xs text-titanium-dark/60 py-3 border-t border-light-titanium">
         <p>Tap any unlocked module above to launch interactive vertical swipe training.</p>
       </footer>
-
-      {/* Floating Sales Assistant AI Coach */}
-      <SalesAssistant />
     </div>
   );
 }

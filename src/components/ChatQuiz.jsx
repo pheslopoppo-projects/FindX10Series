@@ -14,11 +14,16 @@ export default function ChatQuiz({ quiz = [], onComplete, onExit, moduleId = 'mo
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submissionStatus, setSubmissionStatus] = useState('idle'); // 'idle' | 'submitting' | 'success' | 'error'
 
-  const chatBottomRef = useRef(null);
+  const chatMessagesRef = useRef(null);
 
-  // Auto-scroll chat to the latest message
+  // Auto-scroll chat to the latest message without hijacking parent container scroll
   const scrollToBottom = () => {
-    chatBottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (chatMessagesRef.current) {
+      chatMessagesRef.current.scrollTo({
+        top: chatMessagesRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
   };
 
   useEffect(() => {
@@ -258,7 +263,7 @@ export default function ChatQuiz({ quiz = [], onComplete, onExit, moduleId = 'mo
       </div>
 
       {/* Chat Messages Stream */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-3.5 no-scrollbar">
+      <div ref={chatMessagesRef} className="flex-1 overflow-y-auto p-4 space-y-3.5 no-scrollbar">
         {messages.map((msg) => {
           if (msg.sender === 'user') {
             // User message bubble: bg-warm-orange text-white rounded-bl-none shadow-md
@@ -318,8 +323,6 @@ export default function ChatQuiz({ quiz = [], onComplete, onExit, moduleId = 'mo
             </div>
           );
         })}
-
-        <div ref={chatBottomRef} />
       </div>
 
       {/* Bottom Area: Multiple-Choice Pill Buttons & Backend Sync Status */}

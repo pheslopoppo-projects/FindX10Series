@@ -34,15 +34,22 @@ export default function ModuleViewer({ module, onBack }) {
     });
   };
 
-  // Support direct linking to quiz slide via query parameter
+  // Ensure the module carousel initializes at slide 1 (index 0) on mount or module change
   useEffect(() => {
+    setActiveSlideIndex(0);
+    if (containerRef.current) {
+      containerRef.current.scrollTop = 0;
+    }
+
+    // Support direct linking to quiz slide only when explicitly provided in query params
     const params = new URLSearchParams(window.location.search);
     if (params.get('slide') === 'quiz') {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         scrollToSlide(totalSnapCount - 1);
       }, 300);
+      return () => clearTimeout(timer);
     }
-  }, [totalSnapCount]);
+  }, [currentModule?.id, totalSnapCount]);
 
   return (
     <div className="relative h-screen w-full bg-moon-white text-titanium-dark overflow-hidden select-none">
