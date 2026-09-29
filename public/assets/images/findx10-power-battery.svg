@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" width="100%" height="100%">
+  <defs>
+    <linearGradient id="batteryGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D98E4B"/>
+      <stop offset="50%" stop-color="#B87333"/>
+      <stop offset="100%" stop-color="#663A12"/>
+    </linearGradient>
+    <linearGradient id="chargeGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE082"/>
+      <stop offset="50%" stop-color="#B87333"/>
+      <stop offset="100%" stop-color="#FF5722"/>
+    </linearGradient>
+    <filter id="boltGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Device Frame -->
+  <rect x="75" y="40" width="450" height="820" rx="55" fill="#141416" stroke="#2D2D32" stroke-width="4"/>
+
+  <!-- Battery Cell Visualization -->
+  <g transform="translate(140, 120)">
+    <!-- Battery Top Cap -->
+    <rect x="110" y="0" width="100" height="20" rx="6" fill="#3D3D45"/>
+    
+    <!-- Outer Battery Casing -->
+    <rect x="20" y="24" width="280" height="380" rx="28" fill="#1B1C22" stroke="#B87333" stroke-width="3"/>
+    
+    <!-- Liquid/Cell Fill -->
+    <rect x="32" y="70" width="256" height="320" rx="20" fill="url(#batteryGrad)" opacity="0.85"/>
+
+    <!-- Lightning Bolt Flash Charge Icon -->
+    <path d="M 175,100 L 120,240 L 165,240 L 135,360 L 225,210 L 175,210 Z" fill="#FFF2D6" stroke="#B87333" stroke-width="3" filter="url(#boltGlow)"/>
+
+    <!-- Capacity Badge inside Battery -->
+    <rect x="55" y="320" width="210" height="46" rx="14" fill="rgba(18,18,18,0.8)" stroke="#E0E0E0" stroke-width="1"/>
+    <text x="160" y="350" text-anchor="middle" fill="#FFFFFF" font-family="-apple-system, sans-serif" font-weight="800" font-size="22" letter-spacing="1">7,150 mAh</text>
+  </g>
+
+  <!-- Fast Charging Spec Header -->
+  <g transform="translate(100, 560)">
+    <rect width="400" height="90" rx="18" fill="#1D1D21" stroke="#33333A" stroke-width="1.5"/>
+    <circle cx="45" cy="45" r="24" fill="rgba(184, 115, 51, 0.2)"/>
+    <path d="M 45,30 L 36,45 L 44,45 L 42,58 L 54,43 L 46,43 Z" fill="#D98E4B"/>
+    <text x="85" y="38" fill="#D98E4B" font-family="-apple-system, sans-serif" font-weight="800" font-size="18">80W SUPERVOOC™</text>
+    <text x="85" y="64" fill="#E0E0E0" font-family="-apple-system, sans-serif" font-size="14">Ultra-fast flash charging with smart temperature safety</text>
+  </g>
+
+  <!-- Longevity Spec -->
+  <g transform="translate(100, 675)">
+    <rect width="400" height="90" rx="18" fill="#1D1D21" stroke="#33333A" stroke-width="1.5"/>
+    <circle cx="45" cy="45" r="24" fill="rgba(184, 115, 51, 0.2)"/>
+    <text x="45" y="52" text-anchor="middle" fill="#B87333" font-size="17" font-weight="bold">6Y</text>
+    <text x="85" y="38" fill="#E0E0E0" font-family="-apple-system, sans-serif" font-weight="700" font-size="16">6-Year Durable Battery Health</text>
+    <text x="85" y="64" fill="#A0A0A5" font-family="-apple-system, sans-serif" font-size="14">Silicon-Carbon anode maintains &gt;80% capacity with 6-year endurance</text>
+  </g>
+</svg>

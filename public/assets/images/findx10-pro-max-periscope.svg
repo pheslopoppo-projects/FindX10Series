@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" width="100%" height="100%">
+  <defs>
+    <linearGradient id="prismLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#B87333" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#E0E0E0" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#5078FF" stop-opacity="0.8"/>
+    </linearGradient>
+    <radialGradient id="zoomGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#B87333" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#121212" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background Card -->
+  <rect x="50" y="50" width="500" height="800" rx="40" fill="#18181A" stroke="#2E2E32" stroke-width="2"/>
+  <circle cx="300" cy="340" r="220" fill="url(#zoomGlow)"/>
+
+  <!-- Periscope Internal Mechanism Cross Section -->
+  <g transform="translate(100, 160)">
+    <!-- Lens Tube -->
+    <rect x="60" y="40" width="280" height="150" rx="20" fill="#0F1012" stroke="#B87333" stroke-width="3"/>
+    
+    <!-- Optical Prism Element -->
+    <polygon points="90,60 170,60 110,170" fill="url(#prismLight)" opacity="0.85"/>
+    
+    <!-- Moving Lens Groups -->
+    <rect x="200" y="65" width="15" height="100" rx="6" fill="#3D5A7A" stroke="#8E9CB2" stroke-width="2"/>
+    <rect x="240" y="70" width="12" height="90" rx="5" fill="#4B6A9B" stroke="#B87333" stroke-width="2"/>
+    <rect x="290" y="80" width="18" height="70" rx="4" fill="#6A8CB8" stroke="#E0E0E0" stroke-width="2"/>
+
+    <!-- Sensor Plane -->
+    <rect x="325" y="75" width="8" height="80" rx="2" fill="#D98E4B"/>
+
+    <!-- Light Path Rays -->
+    <path d="M 10 115 L 120 115 L 120 115 L 330 115" stroke="#FFFFFF" stroke-width="3" stroke-dasharray="6,4" opacity="0.9"/>
+  </g>
+
+  <!-- Focal Length Indicators -->
+  <g transform="translate(100, 420)">
+    <rect x="0" y="0" width="90" height="50" rx="12" fill="#252528" stroke="#3D3D42"/>
+    <text x="45" y="32" text-anchor="middle" fill="#E0E0E0" font-family="-apple-system, sans-serif" font-weight="bold" font-size="16">15mm</text>
+    <text x="45" y="65" text-anchor="middle" fill="#8E8E93" font-family="-apple-system, sans-serif" font-size="11">Ultra-Wide</text>
+
+    <rect x="105" y="0" width="90" height="50" rx="12" fill="#252528" stroke="#3D3D42"/>
+    <text x="150" y="32" text-anchor="middle" fill="#E0E0E0" font-family="-apple-system, sans-serif" font-weight="bold" font-size="16">23mm</text>
+    <text x="150" y="65" text-anchor="middle" fill="#8E8E93" font-family="-apple-system, sans-serif" font-size="11">1X Main</text>
+
+    <rect x="210" y="0" width="90" height="50" rx="12" fill="rgba(184, 115, 51, 0.2)" stroke="#B87333" stroke-width="2"/>
+    <text x="255" y="32" text-anchor="middle" fill="#D98E4B" font-family="-apple-system, sans-serif" font-weight="bold" font-size="16">70mm</text>
+    <text x="255" y="65" text-anchor="middle" fill="#B87333" font-family="-apple-system, sans-serif" font-weight="bold" font-size="11">3X Portrait</text>
+
+    <rect x="315" y="0" width="90" height="50" rx="12" fill="rgba(184, 115, 51, 0.2)" stroke="#B87333" stroke-width="2"/>
+    <text x="360" y="32" text-anchor="middle" fill="#D98E4B" font-family="-apple-system, sans-serif" font-weight="bold" font-size="16">135mm</text>
+    <text x="360" y="65" text-anchor="middle" fill="#B87333" font-family="-apple-system, sans-serif" font-weight="bold" font-size="11">6X Periscope</text>
+  </g>
+
+  <!-- Feature Highlights -->
+  <g transform="translate(90, 540)">
+    <rect width="420" height="95" rx="16" fill="#1F1F22" stroke="#2F2F35"/>
+    <circle cx="36" cy="47" r="18" fill="rgba(184, 115, 51, 0.2)"/>
+    <text x="36" y="53" text-anchor="middle" fill="#B87333" font-size="16" font-weight="bold">OIS</text>
+    <text x="70" y="38" fill="#E0E0E0" font-family="-apple-system, sans-serif" font-weight="bold" font-size="15">Prism Optical Image Stabilization</text>
+    <text x="70" y="62" fill="#9E9EA5" font-family="-apple-system, sans-serif" font-size="13">Counteracts handshake up to ±3° for sharp distant shots</text>
+  </g>
+
+  <g transform="translate(90, 660)">
+    <rect width="420" height="95" rx="16" fill="#1F1F22" stroke="#2F2F35"/>
+    <circle cx="36" cy="47" r="18" fill="rgba(184, 115, 51, 0.2)"/>
+    <text x="36" y="53" text-anchor="middle" fill="#B87333" font-size="16" font-weight="bold">AI</text>
+    <text x="70" y="38" fill="#E0E0E0" font-family="-apple-system, sans-serif" font-weight="bold" font-size="15">Telephoto Macro &amp; Ultra-Res Zoom</text>
+    <text x="70" y="62" fill="#9E9EA5" font-family="-apple-system, sans-serif" font-size="13">Focus as close as 25cm with stunning optical bokeh</text>
+  </g>
+</svg>

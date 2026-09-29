@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom @font-face rules for Brand Fonts stored locally in public/assets/fonts/ */
+@font-face {
+  font-family: 'OPPO Sans';
+  src: url('/assets/fonts/OPPOSans-Regular.woff2') format('woff2'),
+       url('/assets/fonts/OPPOSans-Regular.woff') format('woff'),
+       url('/assets/fonts/OPPOSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OPPO Sans';
+  src: url('/assets/fonts/OPPOSans-Medium.woff2') format('woff2'),
+       url('/assets/fonts/OPPOSans-Medium.woff') format('woff'),
+       url('/assets/fonts/OPPOSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OPPO Sans';
+  src: url('/assets/fonts/OPPOSans-Bold.woff2') format('woff2'),
+       url('/assets/fonts/OPPOSans-Bold.woff') format('woff'),
+       url('/assets/fonts/OPPOSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Brand Display';
+  src: url('/assets/fonts/BrandDisplay-Bold.woff2') format('woff2'),
+       url('/assets/fonts/BrandDisplay-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+  --bg-primary: #F5F5F7;
+  --border-color: #D8D8E0;
+  --accent-orange: #E36940;
+  --text-dark: #333336;
+}
+
+body {
+  background-color: #F5F5F7;
+  color: #333336;
+  font-family: 'OPPO Sans', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  touch-action: pan-y;
+  overscroll-behavior-y: contain;
+}
+
+/* Hide scrollbars for slick TikTok vertical snap experience */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Metallic gradient utilities */
+.metallic-copper-text {
+  background: linear-gradient(135deg, #F0B27A 0%, #B87333 50%, #935116 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.metallic-copper-border {
+  border-color: #B87333;
+  box-shadow: 0 0 15px rgba(184, 115, 51, 0.25);
+}
+
+.silver-shimmer-text {
+  background: linear-gradient(135deg, #FFFFFF 0%, #E0E0E0 50%, #A0A0A0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Full-Screen Background Zoom-Out Animation */
+@keyframes zoomOut {
+  from {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.animate-zoom-out {
+  animation: zoomOut 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
