@@ -3,6 +3,7 @@ import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import ModuleViewer from './components/ModuleViewer';
 import ChatQuiz from './components/ChatQuiz';
+import Certificate from './components/Certificate';
 import { moduleContent } from './data/moduleContent';
 import { getUserProfile, clearUserProfile } from './utils/storage';
 
@@ -38,6 +39,16 @@ export default function App() {
       });
       setActiveModuleId(moduleParam || 'module-1');
       setCurrentView('quiz');
+      return;
+    }
+
+    if (viewParam === 'certificate') {
+      setUserProfile(profile || {
+        fullName: 'Alex Morgan',
+        storeName: 'Oxford Street Flagship',
+        asmName: 'Zach'
+      });
+      setCurrentView('certificate');
       return;
     }
 
@@ -98,7 +109,17 @@ export default function App() {
           userProfile={userProfile}
           onSelectModule={handleSelectModule}
           onLogout={handleLogout}
+          onViewCertificate={() => setCurrentView('certificate')}
         />
+      )}
+
+      {currentView === 'certificate' && (
+        <div className="min-h-screen w-full max-w-full bg-moon-white flex flex-col items-center justify-center p-1.5 sm:p-6 overflow-x-hidden overflow-y-auto box-border">
+          <Certificate
+            userProfile={userProfile}
+            onClose={handleBackToDashboard}
+          />
+        </div>
       )}
 
       {currentView === 'viewer' && activeModule && (

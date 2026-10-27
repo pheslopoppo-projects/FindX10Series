@@ -3,7 +3,7 @@ import { Camera, Zap, Smartphone, ChevronRight, Lock, CheckCircle2, User, Buildi
 import { getTrainingProgress } from '../utils/storage';
 import { moduleContent } from '../data/moduleContent';
 
-export default function Dashboard({ userProfile, onSelectModule, onLogout }) {
+export default function Dashboard({ userProfile, onSelectModule, onLogout, onViewCertificate }) {
   const progress = getTrainingProgress();
 
   const getModuleIcon = (iconName, modIndex) => {
@@ -69,6 +69,21 @@ export default function Dashboard({ userProfile, onSelectModule, onLogout }) {
               <p className="text-[10px] uppercase tracking-wider text-titanium-dark/60 font-semibold whitespace-nowrap">Modules Passed</p>
             </div>
           </div>
+
+          {(progress['module-3']?.completed || localStorage.getItem('module3_complete') === 'true' || localStorage.getItem('module-3_complete') === 'true') && onViewCertificate && (
+            <div className="mt-3 pt-3 border-t border-light-titanium flex items-center justify-between">
+              <div className="flex items-center gap-1.5 text-xs text-amber-800 font-bold">
+                <Award className="w-4 h-4 text-amber-600" />
+                <span>Academy Graduate</span>
+              </div>
+              <button
+                onClick={onViewCertificate}
+                className="px-3 py-1.5 rounded-full bg-warm-orange text-white text-xs font-bold shadow-md hover:bg-opacity-90 active:scale-95 transition-all flex items-center gap-1"
+              >
+                <span>View Certificate</span>
+              </button>
+            </div>
+          )}
         </section>
 
         {/* Modules List */}

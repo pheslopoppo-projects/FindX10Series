@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Bot, User, CheckCircle2, XCircle, Trophy, RotateCcw, ArrowLeft, Loader2, Database } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { getUserProfile, saveModuleProgress } from '../utils/storage';
+import Certificate from './Certificate';
 
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyh9iWT5q6qWBk3NEG7SznHaqmo8mLFkJVo5XAwugc_qp6D1u6VIDhTSLxwCnIe_HWZOQ/exec';
 
@@ -102,12 +103,15 @@ export default function ChatQuiz({ quiz = [], onComplete, onExit, moduleId = 'mo
       localStorage.setItem(`${moduleId}_complete`, 'true');
       saveModuleProgress(moduleId, finalScore, quiz.length);
 
-      // 5. Provide smooth feedback, then reroute back to Main Dashboard
-      setTimeout(() => {
-        if (onComplete) {
-          onComplete(finalScore, quiz.length);
-        }
-      }, 1500);
+      // 5. Provide smooth feedback, then reroute back to Main Dashboard (only for Modules 1 & 2)
+      const isModule3 = moduleId === 'module-3' || moduleId === 'module3';
+      if (!isModule3) {
+        setTimeout(() => {
+          if (onComplete) {
+            onComplete(finalScore, quiz.length);
+          }
+        }, 1500);
+      }
 
     } catch (error) {
       console.error('Failed to submit to Google Sheets:', error);
@@ -119,11 +123,14 @@ export default function ChatQuiz({ quiz = [], onComplete, onExit, moduleId = 'mo
       localStorage.setItem(`${moduleId}_complete`, 'true');
       saveModuleProgress(moduleId, finalScore, quiz.length);
 
-      setTimeout(() => {
-        if (onComplete) {
-          onComplete(finalScore, quiz.length);
-        }
-      }, 2000);
+      const isModule3 = moduleId === 'module-3' || moduleId === 'module3';
+      if (!isModule3) {
+        setTimeout(() => {
+          if (onComplete) {
+            onComplete(finalScore, quiz.length);
+          }
+        }, 2000);
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -228,6 +235,33 @@ export default function ChatQuiz({ quiz = [], onComplete, onExit, moduleId = 'mo
   };
 
   const currentQ = quiz[currentQuestionIndex];
+  const isModule3 = moduleId === 'module-3' || moduleId === 'module3';
+
+  // When Module 3 quiz is completed, render the visual Certificate of Completion
+  if (isFinished && isModule3) {
+    return (
+      <div className="h-full w-full flex flex-col bg-moon-white text-titanium-dark rounded-3xl overflow-y-auto border border-light-titanium shadow-2xl p-2 sm:p-4">
+        {submissionStatus === 'submitting' && (
+          <div className="mb-2 p-2 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center gap-2 text-xs text-amber-700 flex-shrink-0">
+            <Loader2 className="w-3.5 h-3.5 animate-spin" />
+            <span>Recording graduation to Google Sheets...</span>
+          </div>
+        )}
+        <Certificate
+          userProfile={getUserProfile()}
+          score={score}
+          totalQuestions={quiz.length}
+          onClose={() => {
+            if (onComplete) {
+              onComplete(score, quiz.length);
+            } else if (onExit) {
+              onExit();
+            }
+          }}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="h-full w-full flex flex-col justify-between bg-moon-white text-titanium-dark rounded-t-3xl overflow-hidden border-t border-light-titanium select-none shadow-2xl">

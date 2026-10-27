@@ -220,7 +220,7 @@ export default function ModuleViewer({ module, onBack }) {
 
         {/* Final Slide: Chat-Style Quiz Component */}
         <div className="h-screen w-full snap-start flex flex-col justify-center items-center relative p-3 sm:p-5">
-          <div className="w-full max-w-md h-full flex flex-col justify-between pt-14 pb-4">
+          <div className={`w-full ${currentModule.id === 'module-3' ? 'max-w-3xl' : 'max-w-md'} h-full flex flex-col justify-between pt-10 sm:pt-14 pb-4 transition-all duration-300`}>
             <ChatQuiz
               moduleId={currentModule.id}
               moduleTitle={currentModule.title}
