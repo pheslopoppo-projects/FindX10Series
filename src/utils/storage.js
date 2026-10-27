@@ -31,8 +31,10 @@ export const clearUserProfile = () => {
     localStorage.removeItem(STORAGE_KEY_PROGRESS);
     localStorage.removeItem('module1_complete');
     localStorage.removeItem('module2_complete');
+    localStorage.removeItem('module3_complete');
     localStorage.removeItem('module-1_complete');
     localStorage.removeItem('module-2_complete');
+    localStorage.removeItem('module-3_complete');
   } catch (e) {
     console.error('Failed to clear profile from localStorage:', e);
   }

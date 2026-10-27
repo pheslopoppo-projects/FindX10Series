@@ -9,7 +9,7 @@ export default function Dashboard({ userProfile, onSelectModule, onLogout }) {
   const getModuleIcon = (iconName, modIndex) => {
     if (modIndex === 0) return <Camera className="w-5 h-5 text-warm-orange" />;
     if (modIndex === 1) return <Zap className="w-5 h-5 text-warm-orange" />;
-    return <Smartphone className="w-5 h-5 text-titanium-dark/70" />;
+    return <Smartphone className="w-5 h-5 text-warm-orange" />;
   };
 
   const modules = moduleContent;
@@ -64,8 +64,7 @@ export default function Dashboard({ userProfile, onSelectModule, onLogout }) {
             </div>
             <div className="text-right flex-shrink-0">
               <span className="text-2xl font-black text-warm-orange">
-                {((progress['module-1']?.completed || localStorage.getItem('module1_complete') === 'true' || localStorage.getItem('module-1_complete') === 'true' ? 1 : 0) +
-                  (progress['module-2']?.completed || localStorage.getItem('module2_complete') === 'true' || localStorage.getItem('module-2_complete') === 'true' ? 1 : 0))}/2
+                {[1, 2, 3].reduce((acc, num) => acc + (progress[`module-${num}`]?.completed || localStorage.getItem(`module${num}_complete`) === 'true' || localStorage.getItem(`module-${num}_complete`) === 'true' ? 1 : 0), 0)}/3
               </span>
               <p className="text-[10px] uppercase tracking-wider text-titanium-dark/60 font-semibold whitespace-nowrap">Modules Passed</p>
             </div>
